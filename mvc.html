@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ferdighet 9b MVC</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      //Model
+      let compareTxt1 = "";
+      let compareTxt2 = "";
+      let compareTxt3 = "";
+      let rangeTxt = "";
+      let box1 = "";
+      let box2 = "";
+      let box3 = "";
+    
+      //View
+      //OBS OBS! LEGG TIL STYLING OSV I CSS FØR FERDIGSTILLING!
+    //   updateView();
+
+    //   function updateView() {
+    //     document.getElementById("app").innerHTML = /*HTML*/ `
+
+    //     <p> Ferdighet 9b MVC style - Valgsetninger - Sammenligne to tekster </p>
+    //     <div class= "compareTxt"> ${compareTxt1} </div> 
+    //     <div class= "compareTxt"> ${compareTxt2} </div> 
+    //     <div class= "compareTxt"> ${compareTxt3} </div> 
+    //     <p> Om vi sorterer de tre tekstene, er denne den første;</p>
+    //     <div class= "rangeTxt"> ${rangeTxt} </div>
+    //     <p> Endre på tekstene! (Prøv også å fylle ut tall: 11, 101, 102) </p>
+    //     <input type="text"  oninput= "box1=this.value" value= "" /> <br />
+    //     <input type="text"  oninput= "box2=this.value" value= "" /><br />
+    //     <input type="text"  oninput= "box3=this.value" value= "" /><br />
+    //     <button onclick = "findFirst()"> Sammenlign </button>
+       
+    //     `;
+    //   }
+
+    updateView();
+
+function updateView() {
+  document.getElementById("app").innerHTML = /*HTML*/ `
+
+  <p> Ferdighet 9b MVC style - Valgsetninger - Sammenligne to tekster </p>
+  <div class= "compareTxt"> ${compareTxt1} </div> 
+  <div class= "compareTxt"> ${compareTxt2} </div> 
+  <div class= "compareTxt"> ${compareTxt3} </div> 
+  <p> Om vi sorterer de tre tekstene, er denne den første;</p>
+  <div class= "rangeTxt"> ${rangeTxt} </div>
+  <p> Endre på tekstene! (Prøv også å fylle ut tall: 11, 101, 102) </p>
+  <input type="text" oninput= "findFirst()" value= "Per" /> <br />
+  <input type="text" oninput= "findFirst()" value= "Pål" /> <br />
+  <input type="text" oninput= "findFirst()" value= "Espen" /> <br />
+ 
+  
+ 
+  `;
+}
+      //Controller
+
+      function findFirst() {
+        
+        let box1 = "box1";
+        let box2 = "box2";
+        let box3 = "box3";
+
+
+        if (box1 == box2) {
+          compareTxt1 = "Tekst 1 og 2 er like <br/>";
+        } else {
+          compareTxt1 = "<del> Tekst 1 og 2 er like </del><br/>";
+        }
+        //skal sammenligne tekstene i inputboksene, og legge resultatet i compareTxt
+       
+        if (box1 == box3) {
+          compareTxt2 = "Tekst 1 og 3 er like <br/>";
+        } else {
+          compareTxt2 = "<del> Tekst 1 og 3 er like </del><br/>";
+        }
+        
+        if (box2 == box3) {
+          compareTxt3 = "Tekst 2 og 3 er like <br/>";
+        } else {
+          compareTxt3 = "<del> Tekst 2 og 3 er like </del><br/>";
+        }
+
+        //rangerer input i stigende rekkefølge, og linker "førsteplass" til rangeTxt
+        if (box1 <= box2) {
+            if (box3 <= box1) rangeTxt = box3;
+            else rangeTxt = box1;
+        } else {
+            if (box3 <= box2) rangeTxt = box3;
+            else rangeTxt = box2;
+        }
+        updateView();
+     }
+
+    </script>
+  </body>
+</html>
